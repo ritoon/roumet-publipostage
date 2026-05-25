@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strconv"
 
@@ -153,7 +154,7 @@ func createWord(catalogName string, data map[string]*ClientOrders) *docx.RootDoc
 		listKeys = append(listKeys, k)
 	}
 
-	sort.Slice(listKeys, func(i, j int) bool { return listKeys[i] < listKeys[j] })
+	slices.Sort(listKeys)
 
 	for i := 0; i < len(listKeys); i++ {
 		d := data[listKeys[i]]
